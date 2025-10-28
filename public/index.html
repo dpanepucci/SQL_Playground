@@ -5,19 +5,43 @@
         <title>Healthcare SQL Query Tool</title>
     </head>
     <body>
-        <h1>Query the "patients" table!</h1>
+        <div class="container">
+            <!-- Header Section -->
+            <header class="header">
+                <h1>🏥 Healthcare SQL Practice Tool</h1>
+                <p>Practice SQL queries on healthcare patient data</p>
+            </header>
 
-        <textarea id="queryInput"></textarea>
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Query Input Section -->
+                <section class="query-section">
+                    <div class="query-header">
+                        <h2>SQL Query Editor</h2>
+                        <div class="button-group">
+                            <button onclick="openHelp()" class="btn btn-help">📚 SQL Guide</button>
+                            <button onclick="openHistory()" class="btn btn-history">📋 Query History</button>
+                        </div>
+                    </div>
+                    
+                    <textarea id="queryInput" placeholder="Enter your SQL query here... (e.g., SELECT * FROM patients LIMIT 10;)"></textarea>
+                    
+                    <div class="action-buttons">
+                        <button onclick="runQuery()" class="btn btn-primary">▶️ Run Query</button>
+                        <button onclick="saveQuery()" class="btn btn-secondary">💾 Save Query</button>
+                    </div>
+                </section>
 
-        <button onclick="runQuery()">Run Query</button>
-        <button onclick="saveQuery()">Save Query</button>
-        <br>
+                <!-- Results Section -->
+                <section class="results-section">
+                    <h2>Query Results</h2>
+                    <div id="results"></div>
+                </section>
+            </main>
+        </div>
+        </div>
 
-
-<!-- HELP MODEL -->
-<button onclick="openHelp()">SQL Tip Guide</button>
-
-    <div id="results"></div>
+        <!-- SQL Help Modal -->
         <div id="helpModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeHelp()">&times;</span>
@@ -54,10 +78,8 @@
             </div>
         </div>
 
-<!-- QUERY HISTORY -->
-<button onclick="openHistory()">Query History</button>
-
-    <div id="queryHistory" class="modal">
+        <!-- Query History Modal -->
+        <div id="queryHistory" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeHistory()">&times;</span>
                 <h2>Query History</h2>
