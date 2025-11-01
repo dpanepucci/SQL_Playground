@@ -47,6 +47,14 @@
             <div class="modal-content">
                 <span class="close" onclick="closeQuestion()">&times;</span>
                 <h2>Practice Question</h2>
+                <div class="difficulty-selection">
+                    <h3>Choose Difficulty Level:</h3>
+                    <div class="difficulty-buttons">
+                        <button onclick="easyMode()" id="easyMode" class="btn btn-help">🟢 Easy</button>
+                        <button onclick="mediumMode()" id="mediumMode" class="btn btn-secondary">🟡 Medium</button>
+                        <button onclick="hardMode()" id="hardMode" class="btn btn-primary">🔴 Hard</button>
+                    </div>
+                </div>
                 <div id="questionText"></div>
             </div>
         </div>

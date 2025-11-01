@@ -1,29 +1,105 @@
-function generateQuestion() {
-    const questions = [
-        "What is the average age of patients?",
-        "How many patients have a diagnosis of diabetes?",
-        "List the names of patients who visited in the last month.",
-        "What is the most common diagnosis among patients?",
-        "How many patients are over 65 years old?",
-        "Which gender has more patients in the database?",
-        "What is the youngest patient's age?",
-        "What is the oldest patient's age?",
-        "How many different medical conditions are recorded?",
-        "Which hospital has the most patients?"
-    ];
 
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    const question = questions[randomIndex];
-
-    // Display the question in the modal
+async function easyMode() {
     const questionText = document.getElementById("questionText");
-    const questionModal = document.getElementById("questionModal");
     
-    questionText.innerHTML = `<p style="font-size: 1.1rem; padding: 20px; background: #f5f3f0; border-radius: 8px; border-left: 4px solid #4a90a4;">${question}</p>`;
+    // Show loading
+    questionText.innerHTML = '<div class="loading-message">🤖 Generating easy question...</div>';
+    
+    try {
+        // TODO: Replace with actual OpenAI API call
+        const response = await fetch('/api/generate-question', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ difficulty: 'easy' })
+        });
+        
+        const result = await response.json();
+        
+        if (result.question) {
+            questionText.innerHTML = `
+                <div class="question-display">
+                    <h4>Easy Question:</h4>
+                    <p>${result.question}</p>
+                </div>
+            `;
+        } else {
+            throw new Error('No question received');
+        }
+    } catch (error) {
+        questionText.innerHTML = '<div class="error-message">Error generating question. Please set up the backend endpoint first.</div>';
+    }
+}
+
+async function mediumMode() {
+    const questionText = document.getElementById("questionText");
+    
+    questionText.innerHTML = '<div class="loading-message">🤖 Generating medium question...</div>';
+    
+    try {
+        const response = await fetch('/api/generate-question', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ difficulty: 'medium' })
+        });
+        
+        const result = await response.json();
+        
+        if (result.question) {
+            questionText.innerHTML = `
+                <div class="question-display">
+                    <h4>Medium Question:</h4>
+                    <p>${result.question}</p>
+                </div>
+            `;
+        } else {
+            throw new Error('No question received');
+        }
+    } catch (error) {
+        questionText.innerHTML = '<div class="error-message">Error generating question. Please set up the backend endpoint first.</div>';
+    }
+}
+
+async function hardMode() {
+    const questionText = document.getElementById("questionText");
+    
+    questionText.innerHTML = '<div class="loading-message">🤖 Generating hard question...</div>';
+    
+    try {
+        const response = await fetch('/api/generate-question', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ difficulty: 'hard' })
+        });
+        
+        const result = await response.json();
+        
+        if (result.question) {
+            questionText.innerHTML = `
+                <div class="question-display">
+                    <h4>Hard Question:</h4>
+                    <p>${result.question}</p>
+                </div>
+            `;
+        } else {
+            throw new Error('No question received');
+        }
+    } catch (error) {
+        questionText.innerHTML = '<div class="error-message">Error generating question. Please set up the backend endpoint first.</div>';
+    }
+}
+
+function generateQuestion() {
+    const questionModal = document.getElementById("questionModal");
+    const questionText = document.getElementById("questionText");
+    
+    // Clear any previous content
+    questionText.innerHTML = '';
+    
+    // Show the modal
     questionModal.style.display = 'block';
 }
 
 function closeQuestion() {
     const questionModal = document.getElementById("questionModal");
     questionModal.style.display = 'none';
-}
+};
