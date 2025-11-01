@@ -21,6 +21,7 @@
                         <div class="button-group">
                             <button onclick="openHelp()" class="btn btn-help">📚 SQL Guide</button>
                             <button onclick="openHistory()" class="btn btn-history">📋 Query History</button>
+                            <button onclick="generateQuestion()" class="btn btn-generate">❓ Generate Practice Question</button>
                         </div>
                     </div>
                     
@@ -39,6 +40,15 @@
                 </section>
             </main>
         </div>
+        </div>
+
+        <!-- Practice Question Modal -->
+        <div id="questionModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeQuestion()">&times;</span>
+                <h2>Practice Question</h2>
+                <div id="questionText"></div>
+            </div>
         </div>
 
         <!-- SQL Help Modal -->
@@ -90,5 +100,6 @@
         <script src="./queryHistory.js"></script>
         <script src="./script.js"></script>
         <script src="./modelHelp.js"></script>
+        <script src="./generateQ.js"></script>
     </body>
 </html>

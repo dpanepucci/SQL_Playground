@@ -80,7 +80,7 @@ body {
 
 .button-group {
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 /* Query Input */
@@ -173,6 +173,17 @@ body {
     background: #759157;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(135, 169, 107, 0.3);
+}
+
+.btn-generate {
+    background: #d4955c;
+    color: white;
+}
+
+.btn-generate:hover {
+    background: #c4854a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 149, 92, 0.3);
 }
 
 /* Results Section */
